@@ -21,7 +21,7 @@ bot.onText(/\/start/, (msg) => {
     state = 0;
 });
 
-bot.onText(/\/predict/, (msg) => { 
+bot.onText(/\/Predict/, (msg) => { 
         bot.sendMessage(
         msg.chat.id,
         `masukkan nilai i|v contoh 3|3`
@@ -44,11 +44,11 @@ bot.on('message', (msg) => {
 
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai v yang diprediksi adalah ${v} volt`
+                    `nilai v yang diprediksi adalah ${(jres1[0])} volt`
                     );
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai p yang diprediksi adalah ${p} watt`
+                    `nilai p yang diprediksi adalah ${(jres1[1])} watt`
                     );
                 bot.sendMessage(
                     msg.chat.id,
@@ -76,7 +76,7 @@ r.get('/classify/:i/:r', function(req, res, next) {
                 parseFloat (jres[1])
                 ]
             ).then((jres_)=>{
-            res.json(jres_)
+            res.json(jres, jres_)
         })
     })
 });
