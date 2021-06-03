@@ -7,7 +7,7 @@ const cls_model = require('./sdk/cls_model.js'); // classification
 
 // Bot Setting
 const TelegramBot = require('node-telegram-bot-api');
-const token = '1776541774:AAE7T7E2dyfTEZ_tgCoNgvniyHdiHBtXFwg'
+const token = '1776541774:AAFWpcu8hxNBxYrwms-dtMJU-OJdxeWMVo0'
 const bot = new TelegramBot(token, {polling: true});
 
 state = 0
@@ -29,7 +29,7 @@ bot.onText(/\/predict/, (msg) => {
     state = 1;
 });
 
-bot.on(`message`, (msg) => {
+bot.on('message', (msg) => {
     if (state == 1){
         s = msg.text.split("|");
         model.predict(
