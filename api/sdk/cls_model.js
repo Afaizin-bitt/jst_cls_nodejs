@@ -40,7 +40,7 @@ async function classify(data){
         const path = 'https://raw.githubusercontent.com/Afaizin-bitt/jst_cls_nodejs/main/api/sdk/cls_model.js';
         const model = await tf.loadGraphModel(path);
         
-        predict = model.classify(
+        predict = model.predict(
                 tf_data
         );
         result = predict.dataSync();
