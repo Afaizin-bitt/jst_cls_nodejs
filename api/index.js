@@ -10,7 +10,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = '1776541774:AAFWpcu8hxNBxYrwms-dtMJU-OJdxeWMVo0'
 const bot = new TelegramBot(token, {polling: true});
 
-state = 0
+state = 0;
 // main menu bots
 bot.onText(/\/start/, (msg) => { 
         bot.sendMessage(
@@ -26,7 +26,7 @@ bot.onText(/\/Predict/, (msg) => {
         msg.chat.id,
         `masukkan nilai i|v contoh 3|3`
     );   
-    state = 1
+    state = 1;
 });
 
 bot.on('message', (msg) => {
@@ -61,8 +61,8 @@ bot.on('message', (msg) => {
     }
 })
 // routers
-r.get('/classify/:i/:r', function(req, res, next) {    
-            model.classify(
+r.get('/predict/:i/:r', function(req, res, next) {    
+            model.predict(
         [
             parseFloat(req.params.i), // string to float
             parseFloat(req.params.r)
