@@ -27,7 +27,7 @@ function Argmax(res){
     return label
 }
 
-async function predict(data){
+async function classify(data){
     let in_dim = 4; // 4 inputan : i r v p
     
     data = normalized(data);
@@ -44,7 +44,7 @@ async function predict(data){
                 tf_data
         );
         result = predict.dataSync();
-        return denormalized( result );
+        return ArgMax( result );
         
     }catch(e){
       console.log(e);
