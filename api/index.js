@@ -29,7 +29,7 @@ bot.onText(/\/Predict/, (msg) => {
     state = 1;
 });
 
-bot.on('message', (msg) => {
+bot.on(`message`, (msg) => {
     if (state == 1){
         s = msg.text.split("|");
         model.predict(
