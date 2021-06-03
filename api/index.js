@@ -26,10 +26,10 @@ bot.onText(/\/Predict/, (msg) => {
         msg.chat.id,
         `masukkan nilai i|v contoh 3|3`
     );   
-    state = 1;
+    state = 1
 });
 
-bot.on(`message`, (msg) => {
+bot.on('message', (msg) => {
     if (state == 1){
         s = msg.text.split("|");
         model.predict(
@@ -61,8 +61,8 @@ bot.on(`message`, (msg) => {
     }
 })
 // routers
-r.get(`/classify/:i/:r`, function(req, res, next) {    
-    model.classify(
+r.get('/classify/:i/:r', function(req, res, next) {    
+            model.classify(
         [
             parseFloat(req.params.i), // string to float
             parseFloat(req.params.r)
