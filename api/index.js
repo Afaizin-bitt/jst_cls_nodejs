@@ -61,7 +61,7 @@ bot.on(`message`, (msg) => {
     }
 })
 // routers
-r.get('/classify/:i/:r', function(req, res, next) {    
+r.get(`/classify/:i/:r`, function(req, res, next) {    
     model.classify(
         [
             parseFloat(req.params.i), // string to float
