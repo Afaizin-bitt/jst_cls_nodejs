@@ -22,12 +22,12 @@ bot.onText(/\/start/, (msg) => {
 });
 
 // input 
-bot.onText(/\/Predict/, (msg) => { 
+bot.onText(/\/predict/, (msg) => { 
         bot.sendMessage(
         msg.chat.id,
         `masukkan nilai i|v contohnya 3|3`
     );   
-    state = 1
+    state = 1;
 });
 
 bot.on('message', (msg) => {
@@ -59,12 +59,6 @@ bot.on('message', (msg) => {
                     state= 0;
             })
             })
-    }else{
-       bot.sendMessage(
-               msg.chat.id,
-               `please Click /start`
-               );
-            state = 0;
     }
 })
 // routers
