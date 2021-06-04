@@ -33,8 +33,8 @@ bot.onText(/\/predict/, (msg) => {
 bot.on('message', (msg) => {
     if(state == 1){
         s = msg.text.split("|");
-        i = s[0]
-        r = s[1]
+        i = (s[0])
+        r = (s[1])
         model.predict(
             [
                 parseFloat(s[0]), // string to float
@@ -50,7 +50,7 @@ bot.on('message', (msg) => {
                     );
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai p yang diprediksi adalah ${jres1[1]} watt'
+                    `nilai p yang diprediksi adalah ${jres1[1]} watt`
                     );
                 bot.sendMessage(
                     msg.chat.id,
