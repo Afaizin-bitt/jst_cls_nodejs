@@ -52,5 +52,5 @@ async function classify(data){
 }
 
 module.exports = {
-    classify: classify 
+    classify: classify ,
 }
