@@ -29,7 +29,7 @@ bot.onText(/\/Predict/, (msg) => {
     state = 1;
 });
 
-bot.on('message', (msg) => {
+bot.on(`message`, (msg) => {
     if (state == 1){
         s = msg.text.split("|");
         model.predict(
@@ -61,7 +61,7 @@ bot.on('message', (msg) => {
     }
 })
 // routers
-r.get('/predict/:i/:r', function(req, res, next) {    
+r.get(`/predict/:i/:r`, function(req, res, next) {    
             model.predict(
         [
             parseFloat(req.params.i), // string to float
