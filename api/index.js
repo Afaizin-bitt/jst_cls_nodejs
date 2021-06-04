@@ -27,12 +27,14 @@ bot.onText(/\/Predict/, (msg) => {
         msg.chat.id,
         `masukkan nilai i|v contohnya 3|3`
     );   
-    state = 1;
+    state = 1
 });
 
 bot.on('message', (msg) => {
     if(state == 1){
         s = msg.text.split("|");
+        i = s[0]
+        r = s[1]
         model.predict(
             [
                 parseFloat(s[0]), // string to float
@@ -87,8 +89,8 @@ r.get('/classify/:i/:r', function(req, res, next) {
     ).then((jres)=>{
         cls_model.classify(
             [
-                parseFloat (req.params.parseFloat(s[1])),
-                parseFloat (req.params.parseFloat(s[1])),
+                parseFloat (req.params.i),
+                parseFloat (req.params.r),
                 parseFloat (jres[0]),
                 parseFloat (jres[1])
                 ]
