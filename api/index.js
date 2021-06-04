@@ -66,11 +66,11 @@ bot.on('message', (msg) => {
     }
 })
 // routers
-r.get('/predict/:s[0]/:s[1]', function(req, res, next) {    
+r.get('/predict/:i/:r', function(req, res, next) {    
             model.predict(
         [
-            parseFloat(req.params.s[0]), // string to float
-            parseFloat(req.params.s[1])
+            parseFloat(req.params.i), // string to float
+            parseFloat(req.params.r)
         ]
     ).then((jres)=>{
                     res.json(jres);
@@ -81,19 +81,19 @@ r.get('/predict/:s[0]/:s[1]', function(req, res, next) {
 r.get('/classify/:i/:r', function(req, res, next) {    
             model.predict(
         [
-            parseFloat(req.params.s[0]), // string to float
-            parseFloat(req.params.s[1])
+            parseFloat(req.params.i), // string to float
+            parseFloat(req.params.r)
         ]
     ).then((jres)=>{
         cls_model.classify(
             [
-                parseFloat (req.params.s[0]),
-                parseFloat (req.params.s[1]),
+                parseFloat (req.params.i),
+                parseFloat (req.params.r),
                 parseFloat (jres[0]),
                 parseFloat (jres[1])
                 ]
             ).then((jres_)=>{
-            res.json(jres, jres_)
+            res.json({jres, jres_})
         })
     })
 });
