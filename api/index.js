@@ -60,7 +60,7 @@ bot.on('message', (msg) => {
             })
             })
     }
-})
+});
 // routers
 r.get('/predict/:i/:r', function(req, res, next) {    
             model.predict(
