@@ -21,10 +21,11 @@ bot.onText(/\/start/, (msg) => {
     state = 0;
 });
 
+// input 
 bot.onText(/\/Predict/, (msg) => { 
         bot.sendMessage(
         msg.chat.id,
-        `masukkan nilai i|v contoh 3|3`
+        `masukkan nilai i|v contohnya 3|3`
     );   
     state = 1;
 });
@@ -43,7 +44,6 @@ bot.on('message', (msg) => {
             console.log(jres1);
             
             cls_model.classify([i, r, parseFLoat(jres1[0]), parseFloat(jres1[1])]).then((jres2)=>{
-                
                 bot.sendMessage(
                     msg.chat.id,
                     `nilai v yang diprediksi adalah ${jres1[0]} volt`
@@ -58,7 +58,7 @@ bot.on('message', (msg) => {
                     );
                     state= 0;
             })
-        })
+        });
     }else{
        bot.sendMessage(
                msg.chat.id,
@@ -66,7 +66,7 @@ bot.on('message', (msg) => {
                );
             state = 0;
     }
-})
+});
 // routers
 r.get('/predict/:i/:r', function(req, res, next) {    
             model.predict(
