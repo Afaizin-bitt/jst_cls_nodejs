@@ -56,7 +56,7 @@ bot.on('message', (msg) => {
                     );
                     state= 0;
             })
-        })
+            })
     }else{
        bot.sendMessage(
                msg.chat.id,
@@ -66,11 +66,11 @@ bot.on('message', (msg) => {
     }
 })
 // routers
-r.get('/predict/:parseFloat(s[0])/:parseFloat(s[1])', function(req, res, next) {    
+r.get('/predict/:i/:r', function(req, res, next) {    
             model.predict(
         [
-            parseFloat(req.params.parseFloat(s[1])), // string to float
-            parseFloat(req.params.parseFloat(s[1]))
+            parseFloat(req.params.i), // string to float
+            parseFloat(req.params.r)
         ]
     ).then((jres)=>{
                     res.json(jres);
@@ -78,11 +78,11 @@ r.get('/predict/:parseFloat(s[0])/:parseFloat(s[1])', function(req, res, next) {
 });
 
 //router classify
-r.get('/classify/:parseFloat(s[1])/:parseFloat(s[1])', function(req, res, next) {    
+r.get('/classify/:i/:r', function(req, res, next) {    
             model.predict(
         [
-            parseFloat(req.params.parseFloat(s[1])), // string to float
-            parseFloat(req.params.parseFloat(s[1]))
+            parseFloat(req.params.i), // string to float
+            parseFloat(req.params.r)
         ]
     ).then((jres)=>{
         cls_model.classify(
