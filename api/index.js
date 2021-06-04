@@ -41,7 +41,7 @@ bot.on('message', (msg) => {
             console.log(jres1);
             
             cls_model.classify([parseFloat(s[0]), parseFloat(s[1]), parseFLoat(jres1[0]), parseFloat(jres1[1])]).then((jres2)=>{
-
+                
                 bot.sendMessage(
                     msg.chat.id,
                     `nilai v yang diprediksi adalah ${(jres1[0])} volt`
@@ -54,10 +54,15 @@ bot.on('message', (msg) => {
                     msg.chat.id,
                     `Klasifikasi Tegangan ${jres2}`
                     );
+                    state= 0;
             })
         })
     }else{
-        state = 0
+       bot.sendMessage(
+               msg.chat.id,
+               `please Click /start`
+               );
+            state = 0;
     }
 })
 // routers
