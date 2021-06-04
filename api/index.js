@@ -30,10 +30,8 @@ bot.onText(/\/Predict/, (msg) => {
 });
 
 bot.on('message', (msg) => {
-    if (state == 1){
+    if(state == 1){
         s = msg.text.split("|");
-        i = parseFloat(s[0])
-        r = parseFloat(s[1])
         model.predict(
             [
                 parseFloat(s[0]), // string to float
@@ -46,11 +44,11 @@ bot.on('message', (msg) => {
                 
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai v yang diprediksi adalah ${(jres1[0])} volt`
+                    `nilai v yang diprediksi adalah ${jres1[0]} volt`
                     );
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai p yang diprediksi adalah ${(jres1[1])} watt`
+                    `nilai p yang diprediksi adalah ${jres1[1]} watt`
                     );
                 bot.sendMessage(
                     msg.chat.id,
@@ -68,27 +66,29 @@ bot.on('message', (msg) => {
     }
 })
 // routers
-r.get('/predict/:i/:r', function(req, res, next) {    
+r.get('/predict/:s[0]/:s[1]', function(req, res, next) {    
             model.predict(
         [
-            parseFloat(req.params.i), // string to float
-            parseFloat(req.params.r)
+            parseFloat(req.params.s[0]), // string to float
+            parseFloat(req.params.s[1])
         ]
     ).then((jres)=>{
                     res.json(jres);
             })
 });
+
+//router classify
 r.get('/classify/:i/:r', function(req, res, next) {    
             model.predict(
         [
-            parseFloat(req.params.i), // string to float
-            parseFloat(req.params.r)
+            parseFloat(req.params.s[0]), // string to float
+            parseFloat(req.params.s[1])
         ]
     ).then((jres)=>{
         cls_model.classify(
             [
-                parseFloat (req.params.i),
-                parseFloat (req.params.r),
+                parseFloat (req.params.s[0]),
+                parseFloat (req.params.s[1]),
                 parseFloat (jres[0]),
                 parseFloat (jres[1])
                 ]
