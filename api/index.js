@@ -32,6 +32,8 @@ bot.onText(/\/Predict/, (msg) => {
 bot.on('message', (msg) => {
     if (state == 1){
         s = msg.text.split("|");
+        i = parseFloat(s[0])
+        r = parseFloat(s[1])
         model.predict(
             [
                 parseFloat(s[0]), // string to float
