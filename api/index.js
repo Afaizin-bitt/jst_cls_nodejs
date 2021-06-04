@@ -16,7 +16,7 @@ bot.onText(/\/start/, (msg) => {
         bot.sendMessage(
         msg.chat.id,
         `hello ${msg.chat.first_name}, welcome...\n
-        click /Predict`
+        click /predict`
     );   
     state = 0;
 });
@@ -50,7 +50,7 @@ bot.on('message', (msg) => {
                     );
                 bot.sendMessage(
                     msg.chat.id,
-                    `nilai p yang diprediksi adalah ${jres1[1]} watt`
+                    `nilai p yang diprediksi adalah ${jres1[1]} watt'
                     );
                 bot.sendMessage(
                     msg.chat.id,
@@ -59,8 +59,14 @@ bot.on('message', (msg) => {
                     state= 0;
             })
             })
+    }else{
+       bot.sendMessage(
+               msg.chat.id,
+               `please Click /start`
+               );
+            state = 0;
     }
-});
+})
 // routers
 r.get('/predict/:i/:r', function(req, res, next) {    
             model.predict(
